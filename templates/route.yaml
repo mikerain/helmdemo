@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  host: {{ .Values.route.hostname }}
+  to:
+    kind: Service
+    name: {{ .Release.Name }}-a
+    weight: {{ .Values.route.weight.a }} #主流量的权重
+  alternateBackends:
+  - kind: Service
+    name: {{ .Release.Name }}-b
+    weight: {{ .Values.route.weight.b }}  # 灰度流量的权重
+

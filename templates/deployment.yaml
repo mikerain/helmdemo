@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-a
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-a
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-a
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag_a}}
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-b
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-b
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-b
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag_b}}
+          ports:
+            - containerPort: 8080
+
+

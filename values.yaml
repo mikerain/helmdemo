@@ -1,0 +1,12 @@
+image:
+  repository: quay.io/qxu/log-collection
+  tag_a: main
+  tag_b: test
+
+route:
+  enabled: true
+  #hostname: log-collection-route.example.com
+  weight:
+    a: 80
+    b: 20
+
