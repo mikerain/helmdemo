@@ -1,5 +1,5 @@
 image:
-  repository: quay.io/qxu/log-collection
+  repository: repos.taikangcloud.com/paas-quay-io/qxu/log-collection
   tag_a: main
   tag_b: test
 
@@ -8,5 +8,5 @@ route:
   #hostname: log-collection-route.example.com
   weight:
     a: 80
-    b: 20
+    b: 40 
 
